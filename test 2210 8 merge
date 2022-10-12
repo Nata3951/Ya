@@ -6,3 +6,5 @@ let
     #"Changed column type" = Table.TransformColumnTypes(#"Replaced value 2", {{"Касс с дистрибуцией", Int64.Type}, {"Кол-во SIS с дистрибуцией", Int64.Type}, {"Касс аудировано", Int64.Type}, {"SIS аудировано", Int64.Type}, {"Out of stock flag", Int64.Type}, {"Contract", Int64.Type}, {"SIS Contract", Int64.Type}})
 in
     #"Changed column type"
+    
+    test
