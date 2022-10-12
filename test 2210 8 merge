@@ -1,8 +1,11 @@
 let
-    Source = Table.Combine({#"6-2 DC JTI ready for append", #"5-7 DC outsource ready for append"}),
-    #"Replaced value" = Table.ReplaceValue(Source, "Y", "1", Replacer.ReplaceText, {"SIS Contract", "Contract"}),
-    #"Replaced value 1" = Table.ReplaceValue(#"Replaced value", "N", "0", Replacer.ReplaceText, {"Contract", "SIS Contract"}),
-    #"Replaced value 2" = Table.ReplaceValue(#"Replaced value 1", null, 0, Replacer.ReplaceValue, {"Contract", "SIS Contract", "Касс с дистрибуцией", "Кол-во SIS с дистрибуцией", "Касс аудировано", "SIS аудировано", "Out of stock flag"}),
-    #"Changed column type" = Table.TransformColumnTypes(#"Replaced value 2", {{"Касс с дистрибуцией", Int64.Type}, {"Кол-во SIS с дистрибуцией", Int64.Type}, {"Касс аудировано", Int64.Type}, {"SIS аудировано", Int64.Type}, {"Out of stock flag", Int64.Type}, {"Contract", Int64.Type}, {"SIS Contract", Int64.Type}})
+  Source = Table.Combine({#"6-2 DC JTI ready for append", #"5-7 DC outsource ready for append"}),
+  #"Replaced value" = Table.ReplaceValue(Source, "Y", "1", Replacer.ReplaceText, {"SIS Contract", "Contract"}),
+  #"Replaced value 1" = Table.ReplaceValue(#"Replaced value", "N", "0", Replacer.ReplaceText, {"Contract", "SIS Contract"}),
+  #"Replaced value 2" = Table.ReplaceValue(#"Replaced value 1", null, 0, Replacer.ReplaceValue, {"Contract", "SIS Contract", "Касс с дистрибуцией", "Кол-во SIS с дистрибуцией", "Касс аудировано", "SIS аудировано", "Out of stock flag"}),
+  #"Changed column type 1" = Table.TransformColumnTypes(#"Replaced value 2", {{"Код точки", type text}, {"Product", type text}, {"Service", type text}, {"Employee", type text}, {"OOS reason", type text}, {"Contract", Int64.Type}, {"SIS Contract", Int64.Type}, {"Month ID", Int64.Type}, {"Касс с дистрибуцией", Int64.Type}, {"Кол-во SIS с дистрибуцией", Int64.Type}, {"Касс аудировано", Int64.Type}, {"SIS аудировано", Int64.Type}, {"Out of stock flag", Int64.Type}, {"DC Касс аудировано", Int64.Type}, {"DC SIS аудировано", Int64.Type}, {"Ignore vykladka", Int64.Type}, {"Контрактное оборудование не аудировано", Int64.Type}, {"Контрактное SKU не аудировано", Int64.Type}, {"Any audit on contract equipment", Int64.Type}}),
+  #"Replace errors" = Table.ReplaceErrorValues(#"Changed column type 1", {{"Касс с дистрибуцией", null}, {"Кол-во SIS с дистрибуцией", null}, {"DC Касс аудировано", null}, {"DC SIS аудировано", null}})
 in
-    #"Changed column type"
+  #"Replace errors"
+  
+  and test
