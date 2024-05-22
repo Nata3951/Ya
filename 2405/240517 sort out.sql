@@ -25,3 +25,10 @@ DECLARE $x AS String;
 DECLARE $y AS String?;
 DECLARE $z AS List<String>;
 SELECT $x, $y, $z;
+
+-- Количество дней в месяце даты $dt
+$days_in_month = ($dt) -> {
+    RETURN DateTime::GetDayOfMonth(
+            DateTime::MakeDate(DateTime::ShiftMonths(DateTime::StartOfMonth($dt), 1))
+            + DateTime::IntervalFromDays(-1));
+};
