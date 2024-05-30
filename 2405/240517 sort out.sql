@@ -32,3 +32,8 @@ $days_in_month = ($dt) -> {
             DateTime::MakeDate(DateTime::ShiftMonths(DateTime::StartOfMonth($dt), 1))
             + DateTime::IntervalFromDays(-1));
 };
+
+
+INSERT INTO my_table (Key1, Key2, Value1, Value2)
+VALUES (345987,'ydb', 'Яблочный край', 1414);
+COMMIT;
