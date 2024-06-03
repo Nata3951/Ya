@@ -1,7 +1,7 @@
 select region, Geo::RegionById(cast(region as Int32)).name as region_name,
 
 
--- получить в колонке первое непустое значение
+## получить в колонке первое непустое значение
 SELECT
    FIRST_VALUE(my_column) IGNORE NULLS OVER w
 FROM my_table
@@ -26,7 +26,7 @@ DECLARE $y AS String?;
 DECLARE $z AS List<String>;
 SELECT $x, $y, $z;
 
--- Количество дней в месяце даты $dt
+## Количество дней в месяце даты $dt
 $days_in_month = ($dt) -> {
     RETURN DateTime::GetDayOfMonth(
             DateTime::MakeDate(DateTime::ShiftMonths(DateTime::StartOfMonth($dt), 1))
@@ -34,6 +34,15 @@ $days_in_month = ($dt) -> {
 };
 
 
-INSERT INTO my_table (Key1, Key2, Value1, Value2)
-VALUES (345987,'ydb', 'Яблочный край', 1414);
-COMMIT;
+## распарсить прикрепленный файл
+
+$support_list = 
+    SELECT
+        *
+    FROM 
+        (
+            SELECT
+                ParseFile("String","sup.txt") AS promo
+        )
+    FLATTEN LIST BY promo
+;
