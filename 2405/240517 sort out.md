@@ -1,6 +1,16 @@
 select region, Geo::RegionById(cast(region as Int32)).name as region_name,
 
 
+## доля целого
+-- добавим процент от общей суммы
+$booking_by_month_day_hist = (
+    SELECT
+        day_of_month,
+        month_day_booking_avg,
+        month_day_booking_avg / sum(month_day_booking_avg) OVER () AS day_pct_hist
+    FROM $booking_by_month_day
+);
+
 ## получить в колонке первое непустое значение
 
 ```sql
@@ -29,14 +39,7 @@ DECLARE $z AS List<String>;
 SELECT $x, $y, $z;
 ```
 
-## Количество дней в месяце даты $dt
-```sql
-$days_in_month = ($dt) -> {
-    RETURN DateTime::GetDayOfMonth(
-            DateTime::MakeDate(DateTime::ShiftMonths(DateTime::StartOfMonth($dt), 1))
-            + DateTime::IntervalFromDays(-1));
-};
-```
+
 
 ## распарсить прикрепленный файл
 
