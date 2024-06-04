@@ -2,6 +2,8 @@ select region, Geo::RegionById(cast(region as Int32)).name as region_name,
 
 
 ## доля целого
+
+```sql
 -- добавим процент от общей суммы
 $booking_by_month_day_hist = (
     SELECT
@@ -10,6 +12,7 @@ $booking_by_month_day_hist = (
         month_day_booking_avg / sum(month_day_booking_avg) OVER () AS day_pct_hist
     FROM $booking_by_month_day
 );
+```
 
 ## получить в колонке первое непустое значение
 
