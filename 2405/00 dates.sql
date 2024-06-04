@@ -16,13 +16,15 @@ $minus_one_day = DateTime::IntervalFromDays(-1);
 $end_report_month = DateTime::MakeDate(DateTime::ShiftMonths($start_of_current_month, 1)) + $minus_one_day;
 
 
-
+## Количество дней в месяце даты $dt
 $days_in_month = ($pay_month) -> {
     RETURN (
         DateTime::GetDayOfMonth(DateTime::MakeDate((DateTime::ShiftMonths(DateTime::StartOfMonth($pay_month), 1)))
         + DateTime::IntervalFromDays(-1))
     )
 };
+
+
 
 -- будние дни, на которые приходятся праздники
 $holidays = AsList(
