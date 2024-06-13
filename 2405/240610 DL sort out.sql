@@ -2,6 +2,8 @@ targeted fraction = SUM([targeted_count] BEFORE FILTER BY [is_targeted]) / SUM(C
 
 color = [cohort_analysis_metric] / MAX([cohort_analysis_metric] among [Неделя создания])
 
+avg = AVG(sum([bookings_count_by_payment_dt] INCLUDE [created_dt]))
+
 
     
 IF [selected_metric_type] in ('plan_percent', 'cohort_conversion', 'cr_created_qualified', 'cr_qualified_paid') -- 'conversion'
