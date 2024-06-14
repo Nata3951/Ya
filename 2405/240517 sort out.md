@@ -1,3 +1,9 @@
+##string manipulation
+
+###to number
+practicum/analytics/operational/regular/yql/adhoc/operations_old_sources_hist.sql
+CAST(String::ReplaceAll(value, ",", ".") AS Double) AS value,
+
 select region, Geo::RegionById(cast(region as Int32)).name as region_name,
 
 
@@ -6,13 +12,13 @@ date(INT([created_dt]) + [Bookings руб.]/10000000)
 
 
 ##виджеты инфо
-### кружки в тексте
+###кружки в тексте
 Исходящие лиды, план <span style="color:coral; font-size: 1.2em">&#9679; </span>  и факт <span style="color:navy; font-size: 1.2em">&#9679; </span>
 
-### bold
+###bold
  на Робота. **Целевыми** называются сделки в активных статусах, оплаченные и закрытые с целевой причиной отказа
 
-### перенос строки
+###перенос строки
 Bookings_plan = 
 \n  count(IN) * avg_booking(IN) 
 \n \+ count(OTHER) * avg_booking(OTHER) 
