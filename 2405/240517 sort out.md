@@ -1,5 +1,10 @@
 select region, Geo::RegionById(cast(region as Int32)).name as region_name,
 
+
+###последняя не пустая дата
+date(INT([created_dt]) + [Bookings руб.]/10000000)
+
+
 ##виджеты инфо
 ### кружки в тексте
 Исходящие лиды, план <span style="color:coral; font-size: 1.2em">&#9679; </span>  и факт <span style="color:navy; font-size: 1.2em">&#9679; </span>
