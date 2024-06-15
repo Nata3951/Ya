@@ -1,24 +1,41 @@
-##string manipulation
+## string manipulation
 
-###to number
+### to number
 practicum/analytics/operational/regular/yql/adhoc/operations_old_sources_hist.sql
 CAST(String::ReplaceAll(value, ",", ".") AS Double) AS value,
+
+$replace_comma = Re2::Replace(",");
+$fc = Re2::FindAndConsume(@@([\d]+,?[\d]*)@@);
+
+
+select 
+    year,
+    CAST (year as Uint32) as year1,
+    CASE month
+        WHEN 'Август' THEN 8
+        ELSE 0
+    END as month, 
+    cast($replace_comma(ListConcat($fc(plan)), '.') as DOUBLE) as plan,
+    from $source limit 30;
+
+### nymber from google sheet with spaces
+
 
 select region, Geo::RegionById(cast(region as Int32)).name as region_name,
 
 
-###последняя не пустая дата
+### последняя не пустая дата
 date(INT([created_dt]) + [Bookings руб.]/10000000)
 
 
-##виджеты инфо
+## виджеты инфо
 ###кружки в тексте
 Исходящие лиды, план <span style="color:coral; font-size: 1.2em">&#9679; </span>  и факт <span style="color:navy; font-size: 1.2em">&#9679; </span>
 
-###bold
+### bold
  на Робота. **Целевыми** называются сделки в активных статусах, оплаченные и закрытые с целевой причиной отказа
 
-###перенос строки
+###п еренос строки
 Bookings_plan = 
 \n  count(IN) * avg_booking(IN) 
 \n \+ count(OTHER) * avg_booking(OTHER) 
