@@ -12,3 +12,7 @@ WHERE
 GROUP BY res_0
   ORDER BY res_0 ASC NULLS FIRST
 LIMIT 1000001
+
+
+
+substring(`msk_expired_dttm`, 1, 7) as year_month,
