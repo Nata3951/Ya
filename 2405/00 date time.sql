@@ -6,6 +6,16 @@ $str_to_date = ($str_timestamp) -> {
     )
 };
 
+$str_to_date = ($str_timestamp) -> {
+    RETURN (
+    cast (
+        substring(
+            cast (
+                $str_timestamp as string), 0, 10) 
+                as date)
+    )   
+};
+
 $fdt = DateTime::Format("%Y-%m-%d");
 $report_day = DateTime::MakeDate(CurrentTzDatetime('Europe/Moscow')) + DateTime::IntervalFromDays(-1);
 $start_of_current_month = DateTime::MakeDate(DateTime::StartOfMonth($report_day));
