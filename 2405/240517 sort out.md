@@ -1,4 +1,4 @@
-##expiration for temporary table
+## expiration for temporary table
 
 INSERT INTO `//home/praktikum/users/svnazarov54/rai_cosmolet/prosto_primer` 
 WITH (TRUNCATE, EXPIRATION="2m")
