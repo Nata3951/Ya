@@ -1,3 +1,10 @@
+## добавить колонку, не перечисляя все исходные колонки
+
+SELECT p.*,
+    ROW_NUMBER() OVER w AS row_num
+FROM $payment as p
+WINDOW w AS (PARTITION BY `subscription_id`, `metric` ORDER BY `msk_event_dttm`)
+
 ## expiration for temporary table
 
 INSERT INTO `//home/praktikum/users/svnazarov54/rai_cosmolet/prosto_primer` 
