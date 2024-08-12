@@ -1,3 +1,8 @@
+- - - CHYT - - -
+    date(`first_payment_datetime`) as first_payment_date,
+
+
+- - - YQL - - -
 $str_to_date = ($str_timestamp) -> {
     RETURN (
         DateTime::MakeDate(
