@@ -1,3 +1,12 @@
+## count distinct if
+
+    COUNT(DISTINCT 
+        CASE 
+            WHEN timespent_sec > 0 
+            THEN subscription_id
+            ELSE NULL 
+        END) AS users_count_time_spent
+
 ## добавить колонку, не перечисляя все исходные колонки
 
 SELECT p.*,
