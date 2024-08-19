@@ -50,13 +50,13 @@ date(INT([created_dt]) + [Bookings руб.]/10000000)
 
 
 ## виджеты инфо
-###кружки в тексте
+### кружки в тексте
 Исходящие лиды, план <span style="color:coral; font-size: 1.2em">&#9679; </span>  и факт <span style="color:navy; font-size: 1.2em">&#9679; </span>
 
 ### bold
  на Робота. **Целевыми** называются сделки в активных статусах, оплаченные и закрытые с целевой причиной отказа
 
-###п еренос строки
+### перенос строки
 Bookings_plan = 
 \n  count(IN) * avg_booking(IN) 
 \n \+ count(OTHER) * avg_booking(OTHER) 
